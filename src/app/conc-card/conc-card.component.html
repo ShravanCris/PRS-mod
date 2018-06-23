@@ -1,0 +1,102 @@
+<h1 align="center"> Concession Card</h1>
+
+<mat-grid-list cols="5" rowHeight="2:1">
+  <mat-grid-tile>
+     <mat-form-field>
+      <input matInput placeholder="Issuing Zone">
+    </mat-form-field>
+    </mat-grid-tile>
+  <mat-grid-tile>
+    <mat-form-field>
+      <input matInput placeholder="Issuing Station">
+    </mat-form-field>
+  </mat-grid-tile>
+  <mat-grid-tile>
+    <mat-form-field>
+      <input matInput placeholder="Card Serial No">
+    </mat-form-field>
+ </mat-grid-tile>
+  <mat-grid-tile>
+    <mat-form-field>
+      <input matInput [matDatepicker]="picker1" placeholder="Valid From">
+      <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+      <mat-datepicker #picker1></mat-datepicker>
+    </mat-form-field>
+  </mat-grid-tile>
+  <mat-grid-tile>
+    <mat-form-field>
+      <input matInput [matDatepicker]="picker2" placeholder="Valid Till">
+      <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+      <mat-datepicker #picker2></mat-datepicker>
+    </mat-form-field>
+      
+     
+  </mat-grid-tile>
+  
+
+</mat-grid-list>
+
+ <h1 align="center"> Concession Card Holder Detail</h1>
+<mat-grid-list cols="7" rowHeight="2:1">
+  <mat-grid-tile>
+     <mat-form-field>
+      <input matInput placeholder="First name">
+    </mat-form-field>
+  </mat-grid-tile>
+  <mat-grid-tile>
+    <mat-form-field>
+  <mat-select placeholder="Gender">
+    <mat-option >Male
+    </mat-option>
+    <mat-option>Female
+      </mat-option>
+  </mat-select>
+</mat-form-field>
+  </mat-grid-tile>
+  <mat-grid-tile>
+    <input matInput [matDatepicker]="picker" placeholder="Date of Birth">
+  <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+  <mat-datepicker #picker></mat-datepicker>
+ </mat-grid-tile>
+  <mat-grid-tile>
+    <mat-form-field>
+      <input matInput placeholder="Age">
+    </mat-form-field>
+
+  </mat-grid-tile>
+  <mat-grid-tile>
+<mat-form-field>
+  <mat-select placeholder="Nationality">
+    <mat-option >Indian
+    </mat-option>
+    <mat-option>Non-Indian
+      </mat-option>
+  </mat-select>
+</mat-form-field>
+
+  </mat-grid-tile>
+  <mat-grid-tile>
+<mat-form-field>
+      <input matInput placeholder="Aadhar">
+    </mat-form-field>
+
+  </mat-grid-tile>
+
+  <mat-grid-tile>
+    <mat-form-field>
+  <mat-select placeholder="Card Type">
+    <mat-option *ngFor="let cardtype of cardtypes" [value]="cardtype.value">
+      {{ cardtype.viewValue }}
+    </mat-option>
+  </mat-select>
+</mat-form-field>
+  </mat-grid-tile>
+</mat-grid-list> 
+<div class="buttons" align="right">
+<mat-action-row>
+ <!-- <button mat-button color="warn" (click)="prevStep()">Previous</button>-->
+  <button mat-button color="primary" type="submit">Next</button>
+</mat-action-row>
+</div>
+
+
