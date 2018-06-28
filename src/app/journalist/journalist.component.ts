@@ -11,5 +11,8 @@ export class JournalistComponent implements OnInit {
 
   ngOnInit() {
   }
-
+  genders = [
+    {value: 'Male', viewValue: 'Male'},
+    {value: 'Female', viewValue: 'Female'}
+  ];
 }

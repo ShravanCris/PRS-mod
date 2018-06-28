@@ -23,11 +23,11 @@ const routes: Routes = [{
   component: ConcCardComponent
 },
 {
-  path: 'handicap',
+  path: 'Handicap',
   component:HandicapComponent
 },
 {
-  path:'journalist',
+  path:'Journalist',
   component:JournalistComponent
 }
 ];

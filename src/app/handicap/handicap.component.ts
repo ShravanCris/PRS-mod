@@ -11,5 +11,17 @@ export class HandicapComponent implements OnInit {
 
   ngOnInit() {
   }
+  genders = [
+    {value: 'Male', viewValue: 'Male'},
+    {value: 'Female', viewValue: 'Female'}
+  ];
 
+  companions = [
+    {
+      value: 'Father',viewValue:'Father'
+    },
+    {
+      value:'Spouse',viewValue:'Spouse'
+    }
+  ]
 }
