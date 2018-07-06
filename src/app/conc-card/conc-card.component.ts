@@ -1,4 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import {MatDatepickerInputEvent} from '@angular/material/datepicker';
+import { toDate } from '@angular/common/src/i18n/format_date';
+declare var require: any;
+var ageCalculator = require('age-calculator');
+let { AgeFromDateString,AgeFromDate } = require('age-calculator'); 
 
 @Component({
   selector: 'app-conc-card',
@@ -7,8 +12,22 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ConcCardComponent implements OnInit {
 
-  constructor() { }
+  date :Date;
+  year : String;
+  year2: String;
+  event: String;
+  CC_dob: String;
+  CC_dob_val:String;
+  CC_age: Number;
+  month:Number;
+  today_date: String;
+constructor(){
+    this.CC_age=0;
+    this.CC_dob_val='';
+   }
 
+
+   
   ngOnInit() {
   }
   genders = [
@@ -77,6 +96,40 @@ export class ConcCardComponent implements OnInit {
     {value:'SOUTH EAST CENTRAL RAILWAY',viewValue:'SOUTH EAST CENTRAL RAILWAY'},
     {value:'SOUTH WEST RAILWAY',viewValue:'SOUTH WEST RAILWAY'},
     {value:'WEST CENTRAL RAILWAY',viewValue:'WEST CENTRAL RAILWAY'}
+    ];
+    companions=[
+      { value:'Father',viewValue:'Father'},
+      { value:'Spouse',viewValue:'Spouse'}
     ]
+    addEvent(event: MatDatepickerInputEvent<Date>) {
+      this.date = event.value;
+      this.year= this.date.getFullYear().toString();
+      //this.year =this.date.getFullYear().toString();
+      //serializedDate = new FormControl((new Date()).toISOString());
+      }
 
+      addEvent2(event: MatDatepickerInputEvent<Date>) {
+        this.date = event.value;
+        this.year2= this.date.getFullYear().toString();
+        //this.year =this.date.getFullYear().toString();
+        //serializedDate = new FormControl((new Date()).toISOString());
+        }
+
+        addEvent3(event: MatDatepickerInputEvent<Date>){
+          this.date = event.value;
+          this.month= Number(this.date.getMonth().toString())+1;
+          this.CC_dob_val=String(this.date.getDate().toString()+'-'+this.month.toString()+'-'+this.date.getFullYear().toString());
+          this.CC_dob_val=String(this.date.getFullYear().toString()+'-'+this.month.toString()+'-'+this.date.getDate().toString());
+          console.log(this.CC_dob_val);
+
+          let ageFromString = new AgeFromDateString(this.CC_dob_val).age;
+        //console.log("value from ageFromString", ageFromString);
+
+          this.CC_dob=this.date.getFullYear().toString();
+          console.log(this.CC_dob);
+          this.today_date=new Date().getFullYear().toString();
+          console.log(this.today_date);
+
+          this.CC_age= (ageFromString);
+        }
 }

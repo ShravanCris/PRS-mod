@@ -5,6 +5,14 @@ body {
     margin: 0;
 }
 
+select{
+  width : 100px;
+}
+
+option{
+   width : 200px;
+}
+
 .spacer {
     flex-grow: 1;
 }

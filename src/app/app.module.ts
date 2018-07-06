@@ -15,6 +15,7 @@ import { HandicapComponent } from './handicap/handicap.component';
 import { JournalistComponent } from './journalist/journalist.component';
 import { FooterComponent } from './footer/footer.component'
 import { HttpModule } from '@angular/http';
+import { FormsModule } from '@angular/forms';
 @NgModule({
   declarations: [
     AppComponent,
@@ -33,9 +34,12 @@ import { HttpModule } from '@angular/http';
     BrowserAnimationsModule,
     MaterialModule,
     HttpModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    FormsModule
   ],
   providers: [UserService],
   bootstrap: [AppComponent]
 })
+
+
 export class AppModule { }

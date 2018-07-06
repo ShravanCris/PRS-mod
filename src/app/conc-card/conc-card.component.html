@@ -3,8 +3,8 @@
 <mat-grid-list cols="5" rowHeight="2:1">
   <mat-grid-tile>
     <mat-form-field>
-        <mat-select placeholder="Issuing Zone">
-            <mat-option *ngFor="let zone of zoneList" [value]="zone.value">
+        <mat-select placeholder="Issuing Zone" [(value)]="zonelist_val">
+            <mat-option *ngFor="let zone of zoneList" item-width="30" [value]="zone.value">
               {{ zone.viewValue }}
             </mat-option>
           </mat-select>
@@ -12,24 +12,24 @@
   </mat-grid-tile>
   <mat-grid-tile>
     <mat-form-field>
-      <input matInput placeholder="Issuing Station">
+      <input matInput placeholder="Issuing Station"  [(ngModel)]="issuingstation_val">
     </mat-form-field>
   </mat-grid-tile>
   <mat-grid-tile>
     <mat-form-field>
-      <input matInput placeholder="Card Serial No">
+      <input matInput placeholder="Card Serial No" [(ngModel)]="cards_no_val">
     </mat-form-field>
  </mat-grid-tile>
   <mat-grid-tile>
     <mat-form-field>
-      <input matInput [matDatepicker]="picker1" placeholder="Valid From">
+      <input matInput [matDatepicker]="picker1" placeholder="Valid From" (dateChange)="addEvent($event)">
       <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
       <mat-datepicker #picker1></mat-datepicker>
     </mat-form-field>
   </mat-grid-tile>
   <mat-grid-tile>
     <mat-form-field>
-      <input matInput [matDatepicker]="picker2" placeholder="Valid Till">
+      <input matInput [matDatepicker]="picker2" placeholder="Valid Till" (dateChange)="addEvent2($event)">
       <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
       <mat-datepicker #picker2></mat-datepicker>
     </mat-form-field>
@@ -44,12 +44,12 @@
 <mat-grid-list cols="7" rowHeight="2:1">
   <mat-grid-tile>
      <mat-form-field>
-      <input matInput placeholder="First name">
+      <input matInput placeholder="First name" [(ngModel)]="CC_First_name">
     </mat-form-field>
   </mat-grid-tile>
   <mat-grid-tile>
     <mat-form-field>
-  <mat-select placeholder="Gender">
+  <mat-select placeholder="Gender" [(value)]="CC_gender">
     <mat-option *ngFor="let gender of genders" [value]="gender.value">
       {{ gender.viewValue }}
     </mat-option>
@@ -59,7 +59,7 @@
   <mat-grid-tile>
     <mat-form-field>
 
-        <input matInput [matDatepicker]="picker" placeholder="Date of Birth">
+        <input matInput [matDatepicker]="picker" placeholder="Date of Birth" (dateChange)="addEvent3($event)">
         <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
         <mat-datepicker #picker></mat-datepicker>
 
@@ -68,13 +68,13 @@
  </mat-grid-tile>
   <mat-grid-tile>
     <mat-form-field>
-      <input matInput placeholder="Age">
+      <input matInput placeholder="Age" [(value)]="CC_age">
     </mat-form-field>
 
   </mat-grid-tile>
   <mat-grid-tile>
 <mat-form-field>
-  <mat-select placeholder="Nationality">
+  <mat-select placeholder="Nationality" [(value)]="cc_nationality">
     <mat-option *ngFor="let nationality of nationalities" [value]="nationality.value">
       {{ nationality.viewValue }}
     </mat-option>
@@ -84,7 +84,7 @@
   </mat-grid-tile>
   <mat-grid-tile>
 <mat-form-field>
-      <input matInput placeholder="Aadhar">
+      <input matInput placeholder="Aadhar" [(ngModel)]="cc_aadhar">
     </mat-form-field>
 
   </mat-grid-tile>
@@ -101,7 +101,7 @@
 </mat-grid-list> 
 <br>
 <div *ngIf="(selected=='Journalist')">
-    <h1 align="center">Journalist Details</h1>
+    <h1 align="center">Journalist Spouse Details</h1>
 <mat-grid-list cols=4 rowHeight="4:1">
   <mat-grid-tile>
       <mat-form-field>
@@ -115,15 +115,16 @@
 
 <mat-grid-tile>
     <mat-form-field>
-        <input matInput placeholder="Name">
+        <input matInput placeholder="Name" >
         </mat-form-field>
 </mat-grid-tile>
 
 <mat-grid-tile>
     <mat-form-field>
         <mat-select placeholder="Gender">
-        <mat-option>Male</mat-option>
-        <mat-option>Female</mat-option>
+          <mat-option *ngFor="let gender of genders" [value]="gender.value">
+            {{ gender.viewValue }}
+          </mat-option>
         </mat-select>
         </mat-form-field>
 </mat-grid-tile>
@@ -166,8 +167,9 @@
   <mat-grid-tile>
       <mat-form-field>
           <mat-select placeholder="Father/Companion">
-          <mat-option>Spouse</mat-option>
-          <mat-option>Father</mat-option>
+            <mat-option *ngFor="let companion of companions" [value]="companion.value">
+              {{ companion.viewValue }}
+            </mat-option>
           </mat-select>
           </mat-form-field>
   </mat-grid-tile>
@@ -181,7 +183,7 @@
   <mat-grid-tile>
       <mat-form-field>
           <mat-select placeholder="Gender">
-              <mat-option *ngFor="let gender of genders" [value]="gender.value">
+              <mat-option *ngFor="let gender of genders" [value]="gender.value" >
                   {{ gender.viewValue }}
                 </mat-option>
           </mat-select>
@@ -243,10 +245,15 @@
   <mat-grid-tile>
   </mat-grid-tile>
 </mat-grid-list>
-    </div>
+</div>
 
 
+<h2>Zone = {{zonelist_val}},Issuing station :{{issuingstation_val}}, Card Serial No : {{cards_no_val}}</h2>
+<h2>Valid from year = {{year}}, Valid to Year = {{ year2 }}  </h2>
+<h2>Concession card holder first name = {{CC_First_name}} <br> Gender : {{CC_gender}}  ,Date of Birth: {{CC_dob_val}}</h2>
+<h2>Age = {{CC_age}}  Nationality={{cc_nationality}}   Aadhar={{cc_aadhar}}  card_type={{selected}}</h2>
 
+<br>
 
 <div class="buttons" align="center">
 <mat-action-row>

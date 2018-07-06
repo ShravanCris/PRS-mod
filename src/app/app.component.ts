@@ -7,4 +7,5 @@ import { UserService } from './user.service';
 })
 export class AppComponent {
   title = 'Hello Angular';
+  
 }
