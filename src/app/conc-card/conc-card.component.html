@@ -44,7 +44,7 @@
 <mat-grid-list cols="7" rowHeight="2:1">
   <mat-grid-tile>
      <mat-form-field>
-      <input matInput placeholder="First name" [(ngModel)]="CC_First_name">
+      <input matInput placeholder="First name" [(ngModel)]="CC_First_name" maxlength="25">
     </mat-form-field>
   </mat-grid-tile>
   <mat-grid-tile>
@@ -84,7 +84,7 @@
   </mat-grid-tile>
   <mat-grid-tile>
 <mat-form-field>
-      <input matInput placeholder="Aadhar" [(ngModel)]="cc_aadhar">
+      <input matInput placeholder="Aadhar" [(ngModel)]="cc_aadhar" maxlength="12">
     </mat-form-field>
 
   </mat-grid-tile>
@@ -115,13 +115,13 @@
 
 <mat-grid-tile>
     <mat-form-field>
-        <input matInput placeholder="Name" >
+        <input matInput placeholder="Name" [(ngModel)]="JS_spouse_name" >
         </mat-form-field>
 </mat-grid-tile>
 
 <mat-grid-tile>
     <mat-form-field>
-        <mat-select placeholder="Gender">
+        <mat-select placeholder="Gender" [(value)]="JS_gender">
           <mat-option *ngFor="let gender of genders" [value]="gender.value">
             {{ gender.viewValue }}
           </mat-option>
@@ -130,7 +130,7 @@
 </mat-grid-tile>
   <mat-grid-tile>
       <mat-form-field>
-          <input matInput [matDatepicker]="picker3" placeholder="Date Of Birth">
+          <input matInput [matDatepicker]="picker3" placeholder="Date Of Birth" (dateChange)="addEvent4($event)">
           <mat-datepicker-toggle matSuffix [for]="picker3"></mat-datepicker-toggle>
           <mat-datepicker #picker3></mat-datepicker>
         </mat-form-field>
@@ -138,25 +138,25 @@
 
   <mat-grid-tile>
       <mat-form-field>
-          <input matInput placeholder="Aadhar">
+          <input matInput placeholder="Aadhar" [(ngModel)]="JS_aadhar">
           </mat-form-field>
   </mat-grid-tile>
 
 <mat-grid-tile>
     <mat-form-field>
-        <input matInput placeholder="Agency">
+        <input matInput placeholder="Agency" [(ngModel)]="JS_agency">
         </mat-form-field>
 </mat-grid-tile>
 
 <mat-grid-tile>
     <mat-form-field>
-        <input matInput placeholder="Issuing Authority">
+        <input matInput placeholder="Issuing Authority" [(ngModel)]="JS_issuing_auth">
         </mat-form-field>
 </mat-grid-tile>
  
 <mat-grid-tile>
     <mat-form-field>
-        <input matInput placeholder="Designation">
+        <input matInput placeholder="Designation" [(ngModel)]="JS_issuing_station">
         </mat-form-field>
 </mat-grid-tile>
 </mat-grid-list>
@@ -176,13 +176,13 @@
   
   <mat-grid-tile>
     <mat-form-field>
-      <input matInput placeholder="Name">
+      <input matInput placeholder="Name" [(ngModel)]="h_name">
       </mat-form-field>
     </mat-grid-tile>
   
   <mat-grid-tile>
       <mat-form-field>
-          <mat-select placeholder="Gender">
+          <mat-select placeholder="Gender" [(value)]="H_gender">
               <mat-option *ngFor="let gender of genders" [value]="gender.value" >
                   {{ gender.viewValue }}
                 </mat-option>
@@ -192,19 +192,19 @@
   
   <mat-grid-tile>
       <mat-form-field>
-          <input matInput placeholder="Certificate Number">
+          <input matInput placeholder="Certificate Number" [(ngModel)]="H_certi_number">
           </mat-form-field>
   </mat-grid-tile>
   
   <mat-grid-tile>
       <mat-form-field>
-          <input matInput placeholder="Address">
+          <input matInput placeholder="Address" maxlength="200" [(ngModel)]="H_address">
           </mat-form-field>
   </mat-grid-tile>
   
   <mat-grid-tile>
       <mat-form-field>
-          <mat-select placeholder="Conc Type">
+          <mat-select placeholder="Conc Type" [(value)]="Con_type">
               <mat-option *ngFor="let conc_type of conc_types" [value]="conc_type.value">
                   {{ conc_type.viewValue }}
                 </mat-option>
@@ -214,7 +214,7 @@
   
   <mat-grid-tile>
      <mat-form-field>
-        <mat-select placeholder="Nature of Handicap">
+        <mat-select placeholder="Nature of Handicap" [(value)]="h_nature">
             <mat-option *ngFor="let h_n of handicap_nature" [value]="h_n.value">
                 {{ h_n.viewValue }}
               </mat-option>
@@ -224,19 +224,19 @@
    
   <mat-grid-tile>
       <mat-form-field>
-          <input matInput placeholder="Name of Doctor / Head of Institution">
+          <input matInput placeholder="Name of Doctor / Head of Institution" [(ngModel)]="doc_name">
           </mat-form-field>
   </mat-grid-tile>
      
   <mat-grid-tile>
       <mat-form-field>
-          <input matInput placeholder="Dr Registration Number">
+          <input matInput placeholder="Dr Registration Number" [(ngModel)]="reg_no">
           </mat-form-field>
   </mat-grid-tile>
   
   <mat-grid-tile>
       <mat-form-field>
-          <input matInput placeholder="Hospital / Clinic">
+          <input matInput placeholder="Hospital / Clinic" [(ngModel)]="hospital">
           </mat-form-field>
   </mat-grid-tile>
   <mat-grid-tile>
@@ -248,10 +248,16 @@
 </div>
 
 
-<h2>Zone = {{zonelist_val}},Issuing station :{{issuingstation_val}}, Card Serial No : {{cards_no_val}}</h2>
-<h2>Valid from year = {{year}}, Valid to Year = {{ year2 }}  </h2>
-<h2>Concession card holder first name = {{CC_First_name}} <br> Gender : {{CC_gender}}  ,Date of Birth: {{CC_dob_val}}</h2>
-<h2>Age = {{CC_age}}  Nationality={{cc_nationality}}   Aadhar={{cc_aadhar}}  card_type={{selected}}</h2>
+<h4>Zone = {{zonelist_val}},Issuing station :{{issuingstation_val}}, Card Serial No : {{cards_no_val}}</h4>
+<h4>Valid from year = {{year}}, Valid to Year = {{ year2 }}  </h4>
+<h4>Concession card holder first name = {{CC_First_name}} <br> Gender : {{CC_gender}}  ,Date of Birth: {{CC_dob_val}}</h4>
+<h4>Age = {{CC_age}}  Nationality={{cc_nationality}}   Aadhar={{cc_aadhar}}  card_type={{selected}}</h4>
+<h4>Journalist Spouse Name = {{JS_spouse_name}} Gender = {{JS_gender}}  DOB = {{JS_Spouse_dob}} </h4>
+<h4>Aadhar = {{JS_aadhar}} Agency ={{JS_agency}}  Issuing Authority= {{JS_issuing_auth}} Designation = {{JS_issuing_station}}</h4>
+
+<h4> Handicap Name = {{h_name}}  Gender ={{H_gender}}  Certificate Number = {{H_certi_number}}</h4>
+<h4>Address = {{H_address}} Concession Type = {{Con_type}} Nature of Handicap = {{h_nature}} Name of Doctor = {{doc_name}}</h4>
+<h4> Registration Number = {{reg_no}}  Hospital = {{hospital}}</h4>
 
 <br>
 

@@ -18,12 +18,14 @@ export class ConcCardComponent implements OnInit {
   event: String;
   CC_dob: String;
   CC_dob_val:String;
+  JS_Spouse_dob:String;
   CC_age: Number;
   month:Number;
   today_date: String;
 constructor(){
     this.CC_age=0;
     this.CC_dob_val='';
+    this.JS_Spouse_dob='';
    }
 
 
@@ -132,4 +134,13 @@ constructor(){
 
           this.CC_age= (ageFromString);
         }
+
+        addEvent4(event: MatDatepickerInputEvent<Date>){
+          this.date= event.value;
+          this.month= Number(this.date.getMonth().toString())+1;
+          this.JS_Spouse_dob=String(this.date.getDate().toString()+'-'+this.month.toString()+'-'+this.date.getFullYear().toString());
+          console.log(this.JS_Spouse_dob);
+          
+        }
+
 }
